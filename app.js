@@ -6,8 +6,8 @@
 var express = require('express');
 var http = require('http');
 var path = require('path');
-var handlebars = require('express3-handlebars')
-
+var handlebars = require('express3-handlebars');
+var add = require('./routes/add');
 var index = require('./routes/index');
 // Example route
 // var user = require('./routes/user');
@@ -15,6 +15,8 @@ var index = require('./routes/index');
 var app = express();
 
 // all environments
+app.get('/add', add.addFriend);
+app.get('/',index.view);
 app.set('port', process.env.PORT || 3000);
 app.set('views', path.join(__dirname, 'views'));
 app.engine('handlebars', handlebars());
